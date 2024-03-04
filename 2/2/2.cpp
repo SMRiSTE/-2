@@ -5,55 +5,34 @@
 class Counter
 {
 
-public:
-    std::string inp;
-    int num1=0;
+private:
+    
+    int num1;
 
-    void stand()
-    {
-        std::string yon;
-        std::cout << "Вы хотите указать начальное значение счётчика? Введите да или нет: ";
-        std::cin >> yon;
-        if (yon == "Da")
-        {
-            std::cout << std::endl << "Введите начальное значение счётчика: ";
-            std::cin >> this->num1;
-        }
-        else if(yon == "Net")
-        {
-            this->num1 = 1;
-        }
-        else {
-            std::cout << "Некоректный ввод!" << std::endl;
-            stand();
-        }
+public:
+
+    Counter(int num1) {
+
+        this->num1 = num1;
+
     }
 
-    void numcom()
-    {
-        while (true)
-        {
-            std::cout << std::endl << "Введите команду ('+', '-', '=' или 'x'): ";
-            std::cin >> this->inp;
-            if (this->inp == "+")
-            {
-                this->num1 += 1;
-            }
-            else if (this->inp == "-")
-            {
-                this->num1 -= 1;
-            }
-            else if (this->inp == "=")
-            {
-                std::cout << this->num1;
-            }
-            else if (this->inp == "x")
-            {
-                std::cout << std::endl << "До свидания!";
-                break;
-            }
-        }
+    int plus() {
 
+        this->num1 += 1;
+        return this->num1;
+
+    }
+
+    int minus() {
+
+        this->num1 -= 1;
+        return this->num1;
+
+    }
+
+    int equally() {
+        return this->num1;
     }
 };
 
@@ -61,7 +40,47 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
 
-    Counter coun;
-    coun.stand();
-    coun.numcom();
+    std::string pme;
+
+    int num;
+    std::string yon;
+
+    std::cout << "Вы хотите указать начальное значение счётчика? Введите da или net: ";
+    std::cin >> yon;
+
+    if (yon == "da"){
+
+        std::cout << "Введите начальное значение счётчика: ";
+        std::cin >> num;
+
+    }
+
+    else{
+        num = 1;
+    }
+
+    Counter Counter(num);
+
+    while (true) {
+
+        std::cout << "Введите команду ('+', '-', '=' или 'x'): ";
+        std::cin >> pme;
+
+        if (pme == "+") {
+            Counter.plus();
+        }
+
+        else if (pme == "-") {
+            Counter.minus();
+        }
+
+        else if (pme == "=") {
+            std::cout << Counter.equally() << std::endl;
+        }
+
+        else if (pme == "x") {
+            std::cout << "До свидания!";
+            break;
+        }
+    }
 }

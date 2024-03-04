@@ -1,39 +1,37 @@
 ﻿#include <iostream>
 
 class Calculator{
-public:
+private:
 	double num1;
 	double num2;
 
+public:
+	Calculator() {
+		this->num1 = 1;
+		this->num2 = 2;
+	}
+
 		double add() {
-			std::cout << "num1 + num2 = " << num1 + num2 << std::endl;
 			return num1 + num2;
 		}
 		double multiply() {
-			std::cout << "num1 * num2 = " << num1 * num2 << std::endl;
 			return num1 * num2;
 		}
-		double subtract_1_2() {
-			std::cout << "num2 - num1 = " << num2 - num1 << std::endl;
+		double subtract_2_1() {
 			return num2 - num1;
 		}
-		double subtract_2_1() {
-			std::cout << "num1 - num2 = "<< num1 - num2 << std::endl;
+		double subtract_1_2() {
 			return num1 - num2;
 		}
 		double divide_1_2() {
-			std::cout << "num1 / num2 = " << num1 / num2 << std::endl;
 			return num1 / num2;
 		}
 		double divide_2_1() {
-			std::cout << "num2 / num1 = " << num2 / num1 << std::endl;
 			return num2 / num1;
 		}
 		bool set_num1(double num1) {
 			if (num1 == 0) {
 				std::cout << "Неверный ввод!" << std::endl;
-				std::cout << "Введите num1: ";
-				std::cin >> num1;
 				return false;
 			}
 			else {
@@ -44,8 +42,6 @@ public:
 		bool set_num2(double num2) {
 			if (num2 == 0) {
 				std::cout << "Неверный ввод!" << std::endl;
-				std::cout << "Введите num2: ";
-				std::cin >> num2;
 				return false;
 			}
 			else {
@@ -58,15 +54,14 @@ public:
 
 void get(double num1, double num2) {
 	Calculator cal;
-	cal.set_num1(num1);
-	cal.set_num2(num2);
-	cal.add();
-	cal.multiply();
-	cal.subtract_1_2();
-	cal.subtract_2_1();
-	cal.divide_1_2();
-	cal.divide_2_1();
-	
+	if (cal.set_num1(num1) == 1&& cal.set_num2(num2)==1) {
+		std::cout << "num1 + num2 = " << cal.add() << std::endl;
+		std::cout << "num1 * num2 = " << cal.multiply() << std::endl;
+		std::cout << "num2 - num1 = " << cal.subtract_2_1() << std::endl;
+		std::cout << "num1 - num2 = " << cal.subtract_1_2() << std::endl;
+		std::cout << "num1 / num2 = " << cal.divide_1_2() << std::endl;
+		std::cout << "num2 / num1 = " << cal.divide_2_1() << std::endl;
+	}
 }
 
 int main() {
